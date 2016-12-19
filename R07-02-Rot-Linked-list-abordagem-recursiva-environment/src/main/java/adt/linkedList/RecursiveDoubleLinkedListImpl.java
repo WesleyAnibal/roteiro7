@@ -41,8 +41,10 @@ public class RecursiveDoubleLinkedListImpl<T> extends RecursiveSingleLinkedListI
 
 	@Override
 	public void removeLast() {
-		if (next.isEmpty()) {
-			this.previous.next= new RecursiveSingleLinkedListImpl<>() ;
+		RecursiveDoubleLinkedListImpl<T> atual = this;
+		RecursiveDoubleLinkedListImpl<T> proximo = (RecursiveDoubleLinkedListImpl<T>) this.next;
+		if (proximo.next == null) {
+			atual.next = new RecursiveDoubleLinkedListImpl<>();
 		} else {
 			((DoubleLinkedList<T>) next).removeLast();
 		}
